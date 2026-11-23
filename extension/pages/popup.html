@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Calm Tab Groups</title>
+<link rel="stylesheet" href="common.css">
+<style>
+  html { overflow: hidden; }
+  body { width: 380px; min-height: 120px; max-height: 590px; display: flex; flex-direction: column; overflow: hidden; }
+  header { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+  header img { width: 22px; height: 22px; }
+  header h1 { font-size: 15px; flex: 1; }
+  main { overflow-y: auto; padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 12px; }
+  footer { display: flex; justify-content: space-between; padding: 8px 12px; border-top: 1px solid var(--border); }
+  section > h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 6px; font-weight: 600; }
+
+  .paused { background: var(--surface-2); border-radius: var(--radius); padding: 8px 10px; font-size: 13px; display: flex; gap: 8px; align-items: center; }
+
+  .current { background: var(--surface); border-radius: var(--radius); padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+  .current .site { display: flex; align-items: center; gap: 8px; font-weight: 600; overflow: hidden; }
+  .current .site span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .current label { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+  .current select { flex: 1; }
+  .hint { font-size: 12px; color: var(--muted); }
+
+  details.suggest { background: var(--surface); border-radius: var(--radius); padding: 8px 10px; }
+  details.suggest summary { cursor: pointer; font-size: 13px; color: var(--muted); }
+  .srow { display: flex; align-items: center; gap: 8px; margin-top: 8px; font-size: 13px; }
+  .srow .name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .srow select { max-width: 140px; }
+
+  .group { border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg); }
+  .group + .group { margin-top: 6px; }
+  .grow { display: flex; align-items: center; gap: 9px; padding: 8px 10px; cursor: pointer; border-radius: var(--radius); }
+  .grow:hover { background: var(--surface); }
+  .grow .title { flex: 1; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .grow .count { font-size: 12px; color: var(--muted); }
+  .grow .chev { color: var(--muted); transition: transform .15s; }
+  .group.open .chev { transform: rotate(90deg); }
+  .editor { padding: 4px 10px 10px; display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--border); }
+  .editor .field { display: flex; flex-direction: column; gap: 5px; }
+  .editor .field > span { font-size: 12px; color: var(--muted); }
+  .addrow { display: flex; gap: 6px; }
+  .addrow input { flex: 1; }
+  .editor .bottom { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .checkline { display: flex; gap: 7px; align-items: flex-start; font-size: 13px; cursor: pointer; }
+  .checkline input { margin-top: 2px; }
+
+  .setup { text-align: center; padding: 18px 8px; display: flex; flex-direction: column; gap: 12px; align-items: center; }
+</style>
+</head>
+<body>
+  <header>
+    <img src="../icons/icon-48.png" alt="">
+    <h1>Calm Tab Groups</h1>
+    <label class="switch" title="Sort tabs automatically">
+      <input type="checkbox" id="enabled">
+      <span class="track"></span>
+    </label>
+  </header>
+  <main id="main"></main>
+  <footer>
+    <button id="addGroup" class="ghost">+ New group</button>
+    <span>
+      <button id="sortNow" title="Sort all open tabs now">Sort now</button>
+      <button id="settings" class="ghost" title="Settings, backup and import">Settings</button>
+    </span>
+  </footer>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

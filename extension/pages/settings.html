@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calm Tab Groups – Settings</title>
+<link rel="stylesheet" href="common.css">
+<style>
+  body { background: var(--surface); }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 32px 20px 60px; }
+  .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+  .brand img { width: 36px; height: 36px; }
+  .brand h1 { font-size: 21px; }
+  .card { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow); padding: 20px 22px; margin-bottom: 16px; }
+  .card h2 { font-size: 16px; margin-bottom: 4px; }
+  .card > p { margin: 0 0 14px; color: var(--muted); font-size: 13px; }
+  .row { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 10px 0; border-top: 1px solid var(--border); }
+  .row:first-of-type { border-top: none; }
+  .row .label b { display: block; font-weight: 600; }
+  .row .label span { font-size: 13px; color: var(--muted); }
+  .row select { min-width: 180px; }
+  .buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+  .groups { display: flex; flex-wrap: wrap; gap: 6px; }
+  .groups > span { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--border); border-radius: 14px; padding: 3px 10px; font-size: 13px; }
+  footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 24px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand"><img src="../icons/icon-128.png" alt=""><h1>Calm Tab Groups · Settings</h1></div>
+
+    <div class="card">
+      <h2>Sorting</h2>
+      <p>Groups and sites are edited in the pop-up: click the extension icon in the toolbar.</p>
+      <div class="row">
+        <div class="label"><b>Sort tabs automatically</b><span>Turn off to pause. “Sort now” in the pop-up still works.</span></div>
+        <label class="switch"><input type="checkbox" id="enabled"><span class="track"></span></label>
+      </div>
+      <div class="row">
+        <div class="label"><b>Sites without a group</b><span>Where tabs go that match none of your groups.</span></div>
+        <select id="catchAll"></select>
+      </div>
+      <div class="row">
+        <div class="label"><b>Your groups</b></div>
+        <div class="groups" id="groups"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Backup &amp; import</h2>
+      <p>Save your groups to a file, or load them from one. Importing replaces your current groups. Files exported from the “Auto Group Tabs” extension work too.</p>
+      <div class="buttons">
+        <button id="export">⬇ Export to file</button>
+        <button id="import">⬆ Import from file</button>
+      </div>
+      <p class="small muted" style="margin:12px 0 0">Your settings are synced with your Chrome profile, so they follow you to other computers where you are signed in.</p>
+    </div>
+
+    <div class="card">
+      <h2>Start over</h2>
+      <p>Run the setup assistant again, or remove all groups.</p>
+      <div class="buttons">
+        <button id="setup">Run setup again</button>
+        <button id="reset" class="danger">Delete all groups</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Privacy</h2>
+      <p style="margin:0">Calm Tab Groups works entirely on your computer. It reads the addresses of your tabs only to decide which group they belong to. Nothing is sent anywhere, there are no analytics and no tracking.</p>
+    </div>
+
+    <footer>
+      <span id="version"></span> · <a href="https://github.com/Surferdbeere/calm-tab-groups" target="_blank" rel="noopener">Source code on GitHub</a> · Open source (MIT)
+    </footer>
+  </div>
+  <input type="file" id="importFile" accept=".json,application/json" hidden>
+  <script type="module" src="settings.js"></script>
+</body>
+</html>

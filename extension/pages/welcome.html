@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Set up Calm Tab Groups</title>
+<link rel="stylesheet" href="common.css">
+<style>
+  body { background: var(--surface); min-height: 100vh; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 36px 20px 60px; }
+  .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 26px; }
+  .brand img { width: 40px; height: 40px; }
+  .brand h1 { font-size: 22px; }
+  .steps { display: flex; gap: 6px; margin-bottom: 18px; }
+  .steps span { height: 4px; flex: 1; border-radius: 2px; background: var(--border); }
+  .steps span.on { background: var(--accent); }
+  .card { background: var(--bg); border-radius: 14px; box-shadow: var(--shadow); border: 1px solid var(--border); padding: 26px; }
+  .card h2 { font-size: 20px; margin-bottom: 6px; }
+  .card > p.lead { margin: 0 0 20px; color: var(--muted); }
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-top: 22px; gap: 10px; }
+
+  .presets { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
+  .preset { display: flex; gap: 10px; align-items: flex-start; border: 1.5px solid var(--border); border-radius: 12px; padding: 12px; cursor: pointer; background: var(--bg); }
+  .preset:hover { border-color: var(--muted); }
+  .preset.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 7%, var(--bg)); }
+  .preset input { margin-top: 3px; }
+  .preset .t { font-weight: 600; display: flex; align-items: center; gap: 7px; }
+  .preset .ex { font-size: 12px; color: var(--muted); margin-top: 3px; }
+  .preset .found { font-size: 11px; color: var(--ok); margin-top: 4px; font-weight: 600; }
+
+  .sites { display: flex; flex-direction: column; gap: 2px; }
+  .site { display: flex; align-items: center; gap: 10px; padding: 8px 6px; border-bottom: 1px solid var(--border); }
+  .site:last-child { border-bottom: none; }
+  .site .name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .site select { width: 220px; }
+  .empty { padding: 20px; text-align: center; color: var(--muted); background: var(--surface); border-radius: 10px; }
+
+  .choice { display: flex; gap: 12px; align-items: flex-start; border: 1.5px solid var(--border); border-radius: 12px; padding: 14px; cursor: pointer; margin-bottom: 10px; }
+  .choice.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 7%, var(--bg)); }
+  .choice input { margin-top: 3px; }
+  .choice b { display: block; margin-bottom: 2px; }
+
+  .done { text-align: center; padding: 10px 0; }
+  .done .big { font-size: 46px; }
+  .tip { display: flex; gap: 12px; align-items: flex-start; text-align: left; background: var(--surface); border-radius: 10px; padding: 14px; margin-top: 18px; }
+  .summary { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 18px 0 4px; }
+  .summary > span { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--border); border-radius: 14px; padding: 3px 10px; font-size: 13px; }
+  .linklike { background: none; border: none; color: var(--accent); padding: 0; text-decoration: underline; font-size: 13px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand"><img src="../icons/icon-128.png" alt=""><h1>Calm Tab Groups</h1></div>
+    <div class="steps" id="steps"><span></span><span></span><span></span></div>
+    <div class="card" id="card"></div>
+  </div>
+  <input type="file" id="importFile" accept=".json,application/json" hidden>
+  <script type="module" src="welcome.js"></script>
+</body>
+</html>

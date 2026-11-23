@@ -1,0 +1,12 @@
+{
+  "name": "calm-tab-groups",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Chrome extension that sorts tabs into tab groups by website without freezing Chrome on startup.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test",
+    "build": "sh scripts/build.sh"
+  }
+}
